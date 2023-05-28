@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 
 public class Queen {
     public int row,col,x,y;
-	
 	//passing the board to get tile size
 	Board board;
 		
@@ -21,7 +20,7 @@ public class Queen {
 		y = board.TILE_SIZE * col;
 		this.board = board;
 		try {
-            this.sprite = new ImageIcon("N-Queens-Problem-Java/NQueens/NQueens/res/WQueen.png").getImage();
+            this.sprite = new ImageIcon("N-Queens-Problem-Java/NQueens/res/WQueen.png").getImage();
             // Image loaded successfully, continue with your logic
         } catch (Exception e) {
             // Error loading image, handle the exception

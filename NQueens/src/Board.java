@@ -1,11 +1,14 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Stack;
+import javax.swing.Timer;
 
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements ActionListener{
 
     int n;
 
@@ -20,6 +23,8 @@ public class Board extends JPanel {
 
 	StackSolver solver;
 
+	Timer timer;
+
     public Board(int n){
         this.n = n;
 
@@ -29,14 +34,13 @@ public class Board extends JPanel {
 
 		Queens = new Stack();
 
-		Queens = solver.solve();
-
         setLayout(null);
 		setSize(PANEL_SIZE, PANEL_SIZE);												// setting the size of the panel
 	    setFocusable(true);													// setting focusable to true to receive keyboard input 
 	    
 	    setVisible(true);
 
+		start();
 		
     }
 
@@ -46,6 +50,11 @@ public class Board extends JPanel {
 		draw(graphics);																	// calling draw method
 		g.drawImage(image,1,1,this);
 	}
+
+	public void start() {
+    	timer = new Timer(500, this);
+    	timer.start();
+    }
 
     public void draw(Graphics g) {
 		
@@ -66,6 +75,7 @@ public class Board extends JPanel {
 				}
 				
 				g.fillRect(i*TILE_SIZE, j*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+
 			}
 		}
 
@@ -73,6 +83,13 @@ public class Board extends JPanel {
 			Queens.get(i).draw(g);
 		}
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		Queens = solver.solve();
+		repaint();
+	}
 
 
 }

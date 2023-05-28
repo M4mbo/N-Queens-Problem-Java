@@ -3,13 +3,13 @@ import javax.swing.JFrame;
 public class Frame extends JFrame{
     
     int FRAME_WIDTH  = 713;
-    int FRAME_HEIGHT = 735;
+    int FRAME_HEIGHT = 739;
 
     Board board;
 
     public Frame(){
 
-        board = new Board(6);
+        board = new Board(8);
 
         setSize(FRAME_WIDTH, FRAME_HEIGHT);				//setting the frame to the constant values declared as properties
 		setTitle("N Queens");						    // setting a title to the frame
